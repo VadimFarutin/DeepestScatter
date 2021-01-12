@@ -99,6 +99,12 @@
     <ClCompile Include="src\Scene\Cameras\PathTracingRenderer.cpp">
       <Filter>src\Scene\Cameras</Filter>
     </ClCompile>
+    <ClCompile Include="src\Util\HDRLoader.cpp">
+      <Filter>src\Uitl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Util\HDRCubeLoader.cpp">
+      <Filter>src\Uitl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="src\CUDA\inScatter.cu">
@@ -552,6 +558,12 @@
     </ClInclude>
     <ClInclude Include="src\CUDA\cameraCommon.cuh">
       <Filter>src\CUDA</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Util\HDRLoader.h">
+      <Filter>src\Uitl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Util\HDRCubeLoader.h">
+      <Filter>src\Uitl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

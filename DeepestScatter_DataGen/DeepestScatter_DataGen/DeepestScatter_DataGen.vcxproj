@@ -37,6 +37,8 @@
     <ClCompile Include="src\Util\Dataset\Dataset.cpp" />
     <ClCompile Include="src\Util\Dataset\LmdbExceptions.cpp" />
     <ClCompile Include="src\Util\Dataset\Transaction.cpp" />
+    <ClCompile Include="src\Util\HDRCubeLoader.cpp" />
+    <ClCompile Include="src\Util\HDRLoader.cpp" />
     <ClCompile Include="src\Util\Resources.cpp" />
     <ClCompile Include="src\Util\sutil.cpp" />
   </ItemGroup>
@@ -191,6 +193,8 @@
     <ClInclude Include="src\Util\Dataset\Dataset.h" />
     <ClInclude Include="src\Util\Dataset\LmdbExceptions.h" />
     <ClInclude Include="src\Util\Dataset\Transaction.h" />
+    <ClInclude Include="src\Util\HDRCubeLoader.h" />
+    <ClInclude Include="src\Util\HDRLoader.h" />
     <ClInclude Include="src\Util\optixExtraMath.h" />
     <ClInclude Include="src\Util\Resources.h" />
     <ClInclude Include="src\Util\sutil.h" />
