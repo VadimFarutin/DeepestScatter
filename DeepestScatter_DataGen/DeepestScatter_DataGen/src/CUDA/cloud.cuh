@@ -27,6 +27,7 @@ rtDeclareVariable(float, lightIntensity, , );
 rtDeclareVariable(float3, lightColor, , );
 rtDeclareVariable(float3, skyIntensity, , );
 rtDeclareVariable(float3, groundIntensity, , );
+rtDeclareVariable(int, cubemapID, , );
 
 //rtTextureSampler<uchar, 3, cudaReadModeNormalizedFloat> density;
 rtDeclareVariable(int, densityTextureId, , );

@@ -28,5 +28,7 @@ namespace DeepestScatter
         std::vector<std::shared_ptr<SceneItem>> sceneItems;
         std::shared_ptr<Resources> resources;
         optix::Context context;
+
+        optix::TextureSampler cubeSampler;
     };
 }

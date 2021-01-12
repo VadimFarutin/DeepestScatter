@@ -39,6 +39,12 @@ namespace DeepestScatter
         context["choppedMie"]->setTextureSampler(Mie::getChoppedMieSampler(context));
         context["choppedMieIntegral"]->setTextureSampler(Mie::getChoppedMieIntegralSampler(context));
 
+        //std::string path = "C:\\Users\\Vadim\\Documents\\Visual Studio 2015\\Projects\\UnrealEngineSkyAtmosphere\\screenshots\\cubemap_948.hdr";
+        std::string path = "C:\\Users\\Vadim\\Documents\\Visual Studio 2015\\Projects\\UnrealEngineSkyAtmosphere\\screenshots\\cubemap_449.hdr";
+        cubeSampler = sutil::loadCubeBuffer(context, path);
+        int id = cubeSampler->getId();
+        context["cubemapID"]->setInt(id);
+
         for (const auto& item : sceneItems)
         {
             item->init();

@@ -27,6 +27,7 @@ rtDeclareVariable(float3, groundIntensity, , );
 rtDeclareVariable(float, lightIntensity, , );
 rtDeclareVariable(float3, lightColor, , );
 rtDeclareVariable(float3, lightDirection, , );
+rtDeclareVariable(int, cubemapID, , );
 
 RT_PROGRAM void miss()
 {
