@@ -22,7 +22,7 @@ RT_PROGRAM void totalRadiance()
 
     float skySampleProbability = 0.1f;
     //Uncomment to enable sky:
-    bool shouldSampleSky = false;//subframeId % 10 == 0;
+    bool shouldSampleSky = subframeId % 10 == 0;
 
     int depth = 0;
     while (isInBox(pos))

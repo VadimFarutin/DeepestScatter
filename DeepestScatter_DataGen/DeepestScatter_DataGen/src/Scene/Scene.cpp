@@ -44,6 +44,7 @@ namespace DeepestScatter
         cubeSampler = sutil::loadCubeBuffer(context, path);
         int id = cubeSampler->getId();
         context["cubemapID"]->setInt(id);
+        context["useCubemapSky"]->setInt(1);
 
         for (const auto& item : sceneItems)
         {

@@ -28,6 +28,7 @@ rtDeclareVariable(float3, lightColor, , );
 rtDeclareVariable(float3, skyIntensity, , );
 rtDeclareVariable(float3, groundIntensity, , );
 rtDeclareVariable(int, cubemapID, , );
+rtDeclareVariable(int, useCubemapSky, , );
 
 //rtTextureSampler<uchar, 3, cudaReadModeNormalizedFloat> density;
 rtDeclareVariable(int, densityTextureId, , );
@@ -126,8 +127,15 @@ static __device__ __inline__ const float3& sampleSky(const ScatteringEvent& scat
 {
     float3 currentLight;
 
-    float t = clamp((direction.y + 0.5f) / 1.5f, 0.f, 1.f);
-    currentLight = lerp(groundIntensity, skyIntensity, t);
+    if (useCubemapSky)
+    {
+        currentLight = make_float3(rtTexCubemap<float4>(cubemapID, direction.x, direction.y, direction.z));
+    }
+    else
+    {
+        float t = clamp((direction.y + 0.5f) / 1.5f, 0.f, 1.f);
+        currentLight = lerp(groundIntensity, skyIntensity, t);
+    }
 
     return currentLight * scatter.transmittance;
 }
