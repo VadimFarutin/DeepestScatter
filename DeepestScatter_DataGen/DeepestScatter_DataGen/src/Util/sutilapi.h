@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2016, NVIDIA CORPORATION. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -26,27 +26,27 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/**
- * This file was factored out of sutil.h because of a number of header files
- * that require  for proper exporting, but for which including all of
- * sutil.h introduces problems, not the least of which is header pollution from
- * the transitive inclusion of optix.h.
- */
+ /**
+  * This file was factored out of sutil.h because of a number of header files
+  * that require SUTILAPI for proper exporting, but for which including all of
+  * sutil.h introduces problems, not the least of which is header pollution from
+  * the transitive inclusion of optix.h.
+  */
 
-#ifndef __samples_util__h__
-#define __samples_util__h__
+#ifndef __samples_util_sutilapi_h__
+#define __samples_util_sutilapi_h__
 
-#ifndef 
+#ifndef SUTILAPI
 #  if sutil_sdk_EXPORTS /* Set by CMAKE */
 #    if defined( _WIN32 ) || defined( _WIN64 )
-#      define  __declspec(dllexport) 
+#      define SUTILAPI __declspec(dllexport) 
 #      define SUTILCLASSAPI
 #    elif defined( linux ) || defined( __linux ) || defined ( __CYGWIN__ )
-#      define  __attribute__ ((visibility ("default")))
-#      define SUTILCLASSAPI 
+#      define SUTILAPI __attribute__ ((visibility ("default")))
+#      define SUTILCLASSAPI SUTILAPI
 #    elif defined( __APPLE__ ) && defined( __MACH__ )
-#      define  __attribute__ ((visibility ("default")))
-#      define SUTILCLASSAPI 
+#      define SUTILAPI __attribute__ ((visibility ("default")))
+#      define SUTILCLASSAPI SUTILAPI
 #    else
 #      error "CODE FOR THIS OS HAS NOT YET BEEN DEFINED"
 #    endif
@@ -54,14 +54,14 @@
 #  else /* sutil_EXPORTS */
 
 #    if defined( _WIN32 ) || defined( _WIN64 )
-#      define  __declspec(dllimport)
+#      define SUTILAPI __declspec(dllimport)
 #      define SUTILCLASSAPI
 #    elif defined( linux ) || defined( __linux ) || defined ( __CYGWIN__ )
-#      define  __attribute__ ((visibility ("default")))
-#      define SUTILCLASSAPI 
+#      define SUTILAPI __attribute__ ((visibility ("default")))
+#      define SUTILCLASSAPI SUTILAPI
 #    elif defined( __APPLE__ ) && defined( __MACH__ )
-#      define  __attribute__ ((visibility ("default")))
-#      define SUTILCLASSAPI 
+#      define SUTILAPI __attribute__ ((visibility ("default")))
+#      define SUTILCLASSAPI SUTILAPI
 #    else
 #      error "CODE FOR THIS OS HAS NOT YET BEEN DEFINED"
 #    endif
@@ -69,4 +69,4 @@
 #  endif /* sutil_EXPORTS */
 #endif
 
-#endif /* __samples_util__h__ */
+#endif /* __samples_util_sutilapi_h__ */
