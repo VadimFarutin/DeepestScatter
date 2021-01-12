@@ -50,3 +50,18 @@ RT_PROGRAM void miss()
     resultRadiance.result = currentLight;
     resultRadiance.importance = 0;
 }
+
+RT_PROGRAM void missWithCubemap()
+{
+    float3 direction = normalize(ray.direction);
+    float3 currentLight = make_float3(1.0, 1.0, 1.0);
+
+    if (cubemapID != RT_TEXTURE_ID_NULL)
+    {
+        //currentLight = make_float3(rtTexCubemap<float4>(cubemapID, ray.direction.x, ray.direction.y, ray.direction.z));
+        currentLight = make_float3(rtTexCubemap<float4>(cubemapID, direction.x, direction.y, direction.z));
+    }
+
+    resultRadiance.result = currentLight;
+    resultRadiance.importance = 0;
+}

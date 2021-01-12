@@ -24,10 +24,11 @@ namespace DeepestScatter
         renderer->init();
 
         const std::string progressiveFile = "progressive.cu";
+        const std::string pathTracingCameraFile = "pathTracingCamera.cu";
         updateFrameResult = resources->loadProgram(progressiveFile, "updateFrameResult");
         clearScreen = resources->loadProgram(progressiveFile, "clearScreen");
         exception = resources->loadProgram(progressiveFile, "exception");
-        miss = resources->loadProgram(progressiveFile, "miss");
+        miss = resources->loadProgram(pathTracingCameraFile, "missWithCubemap");
 
         context->setExceptionProgram(0, exception);
         context->setMissProgram(0, miss);
