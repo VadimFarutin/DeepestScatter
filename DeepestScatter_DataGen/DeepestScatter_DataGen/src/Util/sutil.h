@@ -32,7 +32,7 @@
 #include <optixu/optixpp_namespace.h>
 #include <vector>
 
-
+#include "sutilapi.h"
 
 // Default catch block
 #define SUTIL_CATCH( ctx ) catch( sutil::APIError& e ) {           \
@@ -112,6 +112,21 @@ void  displayBufferGL(
 // Update frames per second, where the OpenGL/GLUT context
 // is managed by the caller.
 void  displayMillisecondsPerFrame( double milliseconds );
+
+
+// Create on OptiX TextureSampler for the given image file.  If the filename is
+// empty or if loading the file fails, return 1x1 texture with default color.
+optix::TextureSampler SUTILAPI loadTexture(
+    optix::Context context,             // Context used for object creation 
+    const std::string& filename,        // File to load
+    optix::float3 default_color);       // Default color in case of file failure
+
+
+// Creates a Buffer object for the given cubemap files.
+optix::TextureSampler SUTILAPI loadCubeBuffer(
+    optix::Context context,             // Context used for object creation
+    const std::string& filename);       // File to be load 
+
 
 // Calculate appropriate U,V,W for pinhole_camera shader.
 void  calculateCameraVariables(

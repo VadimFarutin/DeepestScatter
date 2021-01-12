@@ -39,6 +39,8 @@
 #endif
 
 #include "sutil.h"
+#include "HDRCubeLoader.h"
+#include "HDRLoader.h"
 
 #include <optixu/optixu_math_namespace.h>
 
@@ -496,6 +498,30 @@ void sutil::displayMillisecondsPerFrame(double milliseconds)
     static char fps_text[128];
     sprintf(fps_text, "MS: %7.2f", milliseconds);
     drawText(fps_text, 10.0f, 10.0f, GLUT_BITMAP_8_BY_13);
+}
+
+optix::TextureSampler sutil::loadTexture(optix::Context context,
+    const std::string& filename, optix::float3 default_color)
+{
+    bool isHDR = false;
+    size_t len = filename.length();
+    if (len >= 3) {
+        isHDR = (filename[len - 3] == 'H' || filename[len - 3] == 'h') &&
+            (filename[len - 2] == 'D' || filename[len - 2] == 'd') &&
+            (filename[len - 1] == 'R' || filename[len - 1] == 'r');
+    }
+    //if (isHDR) {
+        return loadHDRTexture(context, filename, default_color);
+    //}
+    //else {
+    //    return loadPPMTexture(context, filename, default_color);
+    //}
+}
+
+optix::TextureSampler sutil::loadCubeBuffer(optix::Context context,
+    const std::string& filename)
+{
+    return loadHDRCubeBuffer(context, filename);
 }
 
 void sutil::calculateCameraVariables( float3 eye, float3 lookat, float3 up,
